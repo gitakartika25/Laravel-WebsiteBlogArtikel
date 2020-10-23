@@ -3,37 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Article;
 
 class ArticleController extends Controller
 {
-	////Minggu 2///////
-   /*
-    public function articles($id) {
-    	 return 'Halaman artikel dengan id' .$id;
-    }
-*/
-////////Minggu 3//////////////////////
-    /*
-    public function article() {
-    	return view('article', ['name' => 'Gita']);
-    }
-    */
-/////////Minggu 4 Model///////////////
-   
-    /*public function getById($id){
-    	$article = Article::find($id);
-    	return view('article',['article=> $article']);
-    }
-    */
-      public function __invoke($id)
-    {
-        // Cache::rememberForever('article:id:$id', function() use ($id) {
-        //     return Article::find($id);
-        // });
-        // $article = Cache::get('article:id:$id');
+    public function article ($id) {
         $article = Article::find($id);
-        $article = json_decode(json_encode($article));
+        // $articlesAll = json_decode(json_encode($articlesAll));
+         return view('layouts.layout_post_uts', ['article'=>$article]);
+     }
 
-        return view('article', ['id'=>$id])->with(compact('article'));
-    }
+	public function index(){
+		 $articles = Article::all();
+		 return view('manage',['articles' => $articles]);
+	}
+
+	public function add(){
+		return view('addarticle');
+	}
+
+	public function create(Request $request){
+		Article::create([
+		 'title' => $request->title,
+		 'content' => $request->content,
+		 'featured_image' => $request->image
+		 ]);
+		 return redirect('/manage');
+	}
+	public function edit($id){
+		 $article = Article::find($id);
+		 return view('editarticle',['article'=>$article]);
+	}
+
+	public function update($id, Request $request){
+		 $article = Article::find($id);
+		 $article->title = $request->title;
+		 $article->content = $request->content;
+		 $article->featured_image = $request->image;
+		 $article->save();
+		 return redirect('/manage');
+	}
+	public function delete($id){
+		 $article = Article::find($id);
+		 $article->delete();
+		 return redirect('/manage');
+	}
+
 }

@@ -16,4 +16,8 @@ class AboutController extends Controller
     public function about() {
     	return view('about', ['name' => 'Gita']);
     }
+ //UTS//
+    public function about_uts() {
+        return view('about_uts');
+    }
 }
