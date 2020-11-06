@@ -29,15 +29,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item {{ Route::is('home_uts') ? 'active' : '' }}">
+           <li class="nav-item {{ Route::is('home_uts') ? 'active' : '' }}">
+            @can('user-display')
             <a class="nav-link" href="{{ route('home_uts') }}">Home</a>
+            @endcan
           </li>
           <li class="nav-item {{ Route::is('about_uts') ? 'active' : '' }}">
+            @can('user-display')
             <a class="nav-link" href="{{ route('about_uts') }}">About</a>
+            @endcan
           </li>
-
           <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}"">
+            @can('manage-articles')
             <a class="nav-link" href="{{ route('manage') }}">Kelola</a>
+            @endcan
+          </li>
+            <li class="nav-item {{ Route::is('manageusers') ? 'active' : '' }}"">
+            @can('manage-articles')
+            <a class="nav-link" href="{{ route('manageusers') }}">Kelola User</a>
+            @endcan
           </li>
 
           <li class="nav-item dropdown">

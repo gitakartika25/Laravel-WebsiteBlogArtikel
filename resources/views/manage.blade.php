@@ -7,6 +7,15 @@
 </head>
 <body>
 <!--  -->
+
+<div class="starter-template" style="margin-bottom: 10px;">
+        <h1>Kelola Artikel</h1>
+    </div>
+
+    <div class="starter-template" style="margin-bottom: 15px;">
+        <a href="{{ route('home_uts') }}" class="btn btn-outline-info">< Kembali ke Halaman Utama</a>
+    </div>
+
 <div class="container">
         <div class="row">
 	<a href="/addarticle" class="btn btn-primary">Tambah Data</a>

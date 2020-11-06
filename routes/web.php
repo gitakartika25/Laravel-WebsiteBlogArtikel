@@ -47,5 +47,11 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home_uts', 'HomeController@home_uts')->name('home_uts');
 Route::get('/about_uts', 'AboutController@about_uts')->name('about_uts');
+Route::get('/manageusers', 'UserController@usersView')->name('manageusers');
 
 
+Route::get('/users/register', 'UserController@register');
+Route::post('/users/createUser', 'UserController@create');
+Route::get('/users/editUser/{id}', 'UserController@edit');
+Route::post('/users/updateUser/{id}', 'UserController@update');
+Route::get('/users/dropUser/{id}', 'UserController@drop');
