@@ -19,22 +19,35 @@
 <div class="container">
         <div class="row">
 	<a href="/addarticle" class="btn btn-primary">Tambah Data</a>
+	  <a href="/article/cetak_pdf" class="btn btn-success float-right" target="_blank">CETAK PDF</a><br><br>
+
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>	
-					<th>No</th>
-					<th>Judul</th>
-					<th>Tanggal</th>
+					<th scope="col">No</th>
+                <th scope="col">Judul</th>
+                <th scope="col">Gambar</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col center" colspan="2" style="text-align: center;">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($articles as $a)
-				<tr>
-					<td>{{$a->id}}</td>
-					<td>{{$a->title}}</td>
-		 			<td>{{$a->created_at}}</td>
-				</tr>
-				@endforeach
+				 @if($articles->isEmpty())
+            <td colspan="5" class="text-center">Tidak ada data yang ditampilkan</td>
+            @else
+            @foreach($articles AS $a)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $a->title }}</td>
+                <td>
+                    <img src="{{ asset('storage/'.$a->image) }}" alt="{{ $a->image }}" width="50" height="50">
+                </td>
+                <td>{{ $a->updated_at }}</td>
+                <td><a href="article/edit/{{ $a->id }}" class="badge badge-warning">Edit</a></td>
+                <td><a href="article/delete/{{ $a->id }}" class="badge badge-danger" onclick="return confirm('Hapus artikel  `{{ $a->title }}`')">Hapus</a></td>
+            </tr>
+            @endforeach
+            @endif
 			</tbody>
 		</table>
         </div>

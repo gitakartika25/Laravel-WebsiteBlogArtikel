@@ -34,11 +34,16 @@ class ArticleController extends Controller
 	}
 
 	public function create(Request $request){
-		Article::create([
-		 'title' => $request->title,
-		 'content' => $request->content,
-		 'featured_image' => $request->image
-		 ]);
+		 if ($request->file('featured_image')) {
+            $image_name = $request->file('featured_image')->store('images', 'public');
+        }
+
+        Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured_image' => $image_name,
+            'writer' => $request->writer
+        ]);
 		 return redirect('/manage');
 	}
 	public function edit($id){
@@ -47,11 +52,26 @@ class ArticleController extends Controller
 	}
 
 	public function update($id, Request $request){
-		 $article = Article::find($id);
-		 $article->title = $request->title;
-		 $article->content = $request->content;
-		 $article->featured_image = $request->image;
-		 $article->save();
+		   $article = Article::find($id);
+
+        $article->title = $request->title;
+        $article->content = $request->content;
+        
+        // remove image
+        if($article->image && file_exists(storage_path('app/public/' . $article->image)))
+        {
+            \Storage::delete('public/'.$article->image);
+        }
+        // change with new image
+        $image_name = $request->file('featured_image')->store('images', 'public');
+
+        $article->image = $image_name;
+        $article->writer = $request->writer;
+
+        $article->save();
+
+       
+
 		 return redirect('/manage');
 	}
 	public function delete($id){
