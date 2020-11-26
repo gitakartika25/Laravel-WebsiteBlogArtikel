@@ -42,7 +42,7 @@
           </li>
           <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}"">
             @can('manage-articles')
-            <a class="nav-link" href="{{ route('manage') }}">Kelola</a>
+            <a class="nav-link" href="{{ route('manage') }}">Kelola Artikel</a>
             @endcan
           </li>
               <li class="nav-item {{ Route::is('manageusers') ? 'active' : '' }}"">

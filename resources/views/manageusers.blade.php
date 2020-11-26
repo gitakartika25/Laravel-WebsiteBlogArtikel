@@ -15,12 +15,16 @@
         <a href="{{ route('home_uts') }}" class="btn btn-outline-info">< Kembali ke Halaman Utama</a>
     </div>
     
+    <div class="container">
+    <div class="row">
     <a href="users/register" class="btn btn-primary">Tambah Data</a><br><br>
+    <a href="/users/cetak_pdf" class="btn btn-success float-right" target="_blank">CETAK PDF</a><br><br>
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th scope="col">No</th>
+                <th scope="col">Gambar</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Email</th>
                 <th scope="col">Tgl gabung</th>
@@ -32,6 +36,9 @@
             @foreach($user AS $a)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>
+                    <img src="{{ asset('storage/'.$a->profile_image) }}" alt="{{ $a->profile_image }}" width="50" height="50">
+                </td>
                 <td>{{ $a->name }}</td>
                 <td>{{ $a->email }}</td>
                 <td>{{ $a->created_at }}</td>
@@ -42,6 +49,8 @@
             @endforeach
         </tbody>
     </table>
+</div>
+</div>
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

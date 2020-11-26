@@ -11,6 +11,8 @@
 
   <title>{{$article->title}}</title>
 
+
+
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -102,7 +104,7 @@
       <hr>
 
       <!-- Preview Image -->
-      <img class="img-fluid rounded" src="{{$article->featured_image}}" alt="">
+      <img class="img-fluid rounded" src="{{asset ('/storage/'.$article->featured_image)}}" alt="">
 
       <hr>
       {{ $article->content }}     

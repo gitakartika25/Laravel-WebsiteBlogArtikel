@@ -1,35 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit data</title>
-	
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-	 <link href="{{ asset('css/master-css/bootstrap.min.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/master-css/main-css/bs/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/master-css/main-css/tambahan/masterHome.css') }}" rel="stylesheet">
+ <title>Edit Artikel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<main role="main" class="container"><br><br>
+
+    <div class="starter-template" style="margin-bottom: 15px;">
+        <h3>Edit Artikel</h3><br>
+        <a href="{{ route('manage') }}" class="btn btn-outline-info">< Kembali ke Kelola Artikel</a>
+    </div>
+
 <body>
 	<form action="/article/update/{{$article->id}}" method="post" enctype="multipart/form-data" class="clearfix">
 	 @csrf
@@ -51,16 +33,17 @@
                     <span class="input-group-text">Upload</span>
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="imgName" onchange="previewFile(this)" required="required" name="image"></br>
+                    <input type="file" class="custom-file-input" id="imgName" onchange="previewFile(this)"
+                    name="featured_image"></br>
                     <label class="custom-file-label" for="image-upload" id="fileName">
-                        {{ $article->image }}
+                        {{ $article->featured_image }}
                     </label>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label for="image" style="display: block;">Preview</label>
-            <img src="{{ asset('storage/'.$article->image) }}" class="img-fluid img-thumbnail" id="imgHolder" style="height: 200px;" alt="Gambar Preview">
+            <img src="{{ asset('storage/'.$article->featured_image) }}" class="img-fluid img-thumbnail" id="imgHolder" style="height: 200px;" alt="Gambar Preview">
         </div>
         <div class="form-group">
             <label for="image">Diposting oleh</label>

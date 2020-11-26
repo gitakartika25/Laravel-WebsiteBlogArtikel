@@ -6,8 +6,13 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+	<div class="starter-template" style="margin-bottom: 15px;">
+        <h3>Tambah Artikel</h3><br>
+        <a href="{{ route('manage') }}" class="btn btn-outline-info">< Kembali ke Kelola Artikel</a>
+    </div>
 	<div class="container">
-			<form action="/article/create" method="post">
+			<form action="/article/create" method="post" enctype="multipart/form-data">
 				{{csrf_field()}}
 		 		<div class="form-group">
 			 		<label for="title">Judul</label>
@@ -22,7 +27,7 @@
 			 		<div class="form-group">
 					<label for="image">Feature Image</label>
 			 		<input type="file" class="form-control"
-					required="required" name="image"></br>
+					required="required" name="featured_image"></br>
 		 		</div>
 		 		<button type="submit" name="add" class="btn btn-primary btn-lg btn-block">Tambah Data</button>
 

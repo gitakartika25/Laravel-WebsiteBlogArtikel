@@ -19,7 +19,7 @@
 <div class="container">
         <div class="row">
 	<a href="/addarticle" class="btn btn-primary">Tambah Data</a>
-	  <a href="/article/cetak_pdf" class="btn btn-success float-right" target="_blank">CETAK PDF</a><br><br>
+	  <a href="/articles/cetak_pdf" class="btn btn-success float-right" target="_blank">CETAK PDF</a><br><br>
 
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -40,7 +40,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $a->title }}</td>
                 <td>
-                    <img src="{{ asset('storage/'.$a->image) }}" alt="{{ $a->image }}" width="50" height="50">
+                    <img src="{{ asset('storage/'.$a->featured_image) }}" alt="{{ $a->featured_image }}" width="50" height="50">
                 </td>
                 <td>{{ $a->updated_at }}</td>
                 <td><a href="article/edit/{{ $a->id }}" class="badge badge-warning">Edit</a></td>
